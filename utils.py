@@ -1,3 +1,4 @@
+import os
 from typing import Tuple
 
 import imageio.v3 as iio
@@ -39,3 +40,28 @@ def display_comparison(original: np.ndarray, processed: np.ndarray,
     plt.axis('off')
 
     plt.show()
+
+
+def save_image_from_url(image_url: str, output_path: str) -> bool:
+    """
+    Save an image from a URL to the specified file path.
+
+    Args:
+        image_url: URL of the image to save
+        output_path: Path to save the image
+
+    Returns:
+        True if successful, False otherwise
+    """
+    try:
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(os.path.abspath(output_path)), exist_ok=True)
+
+        # Read and save the image
+        image = iio.imread(image_url)
+        iio.imwrite(output_path, image, plugin='tifffile')
+        print(f"Image successfully saved to {output_path}")
+        return True
+    except Exception as e:
+        print(f"Error saving image from URL {image_url}: {str(e)}")
+        return False

@@ -15,7 +15,11 @@ dependencies = [
     "Pillow>=10.0.0",
     "ipython>=8.0.0",
     "tensorflow>=2.0.0",
-    "scipy>=1.10.0"
+    "scipy>=1.10.0",
+    "bs4>=0.0.2",
+    "PySimpleGUI>=5.0.10",
+    "PyInstaller>=6.13.0",
+    "customtkinter>=5.2.2"
 ]
 
 [project.scripts]
